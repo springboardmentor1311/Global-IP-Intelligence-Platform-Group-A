@@ -20,7 +20,7 @@ The Global IP Intelligence Platform is a comprehensive solution for monitoring, 
 
 #### Backend Implementation
 - ✅ Spring Boot 3.5.5 project setup with Maven
-- ✅ MySQL database configuration and integration
+- ✅ PostgreSQL database configuration and integration
 - ✅ User entity with role-based access (USER, ANALYST, ADMIN)
 - ✅ JWT token generation and validation service
 - ✅ OAuth2 Google Sign-In integration
@@ -80,7 +80,7 @@ The Global IP Intelligence Platform is a comprehensive solution for monitoring, 
 - Spring Boot 3.5.5
 - Spring Security
 - Spring Data JPA
-- MySQL Database
+- PostgreSQL Database
 - JWT Authentication
 - Java 21
 
@@ -88,7 +88,7 @@ The Global IP Intelligence Platform is a comprehensive solution for monitoring, 
 
 - **Java JDK 21** or higher
 - **Maven 3.6+**
-- **MySQL 8.0+**
+- **PostgreSQL 14+**
 - **npm** or **yarn**
 - **Git**
 
@@ -240,7 +240,7 @@ The frontend build can be deployed to:
 ## 🐛 Troubleshooting
 
 **Backend not starting?**
-- Check MySQL is running
+- Check PostgreSQL is running
 - Verify database credentials in `application.properties`
 - Ensure port 8080 is available
 
