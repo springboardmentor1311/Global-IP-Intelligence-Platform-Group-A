@@ -33,8 +33,8 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public AuthResponse register(RegisterRequest r) {
-        if (users.existsByEmail(r.getEmail()) || users.existsByUsername(r.getUsername())) {
-            throw new RuntimeException("User already exists");
+        if (users.existsByEmail(r.getEmail())) {
+            throw new RuntimeException("User with this email already exists");
         }
 
         User u = new User();
@@ -44,10 +44,10 @@ public class AuthServiceImpl implements AuthService {
 
         String role = r.getRole();
         if (role == null || role.isBlank()) {
-            role = "CLIENT";
+            role = "USER";
         } else {
             role = role.toUpperCase();
-            if (!role.equals("ADMIN") && !role.equals("ANALYST") && !role.equals("CLIENT")) {
+            if (!role.equals("ADMIN") && !role.equals("ANALYST") && !role.equals("USER")) {
                 throw new RuntimeException("Invalid role: " + role);
             }
         }
@@ -63,12 +63,24 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public AuthResponse login(AuthRequest r) {
+        // Check if input is email or username
+        String identifier = r.getEmail(); // This field now contains either email or username
+        User u;
+
+        // Try to find user by email first, then by username
+        if (identifier.contains("@")) {
+            u = users.findByEmail(identifier)
+                    .orElseThrow(() -> new RuntimeException("Invalid credentials"));
+        } else {
+            u = users.findByUsername(identifier)
+                    .orElseThrow(() -> new RuntimeException("Invalid credentials"));
+        }
+
+        // Authenticate with email and password
         authManager.authenticate(
-                new UsernamePasswordAuthenticationToken(r.getEmail(), r.getPassword())
+                new UsernamePasswordAuthenticationToken(u.getEmail(), r.getPassword())
         );
 
-        User u = users.findByEmail(r.getEmail())
-                .orElseThrow(() -> new RuntimeException("User not found"));
         String token = jwt.generateToken(u.getEmail(), u.getRole());
 
         return new AuthResponse(token, u.getId(), u.getUsername(), u.getEmail(), u.getRole());

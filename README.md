@@ -6,6 +6,59 @@ A full-stack web application for IP intelligence monitoring and analysis, featur
 
 The Global IP Intelligence Platform is a comprehensive solution for monitoring, analyzing, and managing IP-related intelligence data. It provides different interfaces for Admins, Analysts, and Users, each with role-specific features and capabilities.
 
+## 🎯 Project Milestones
+
+### ✅ Milestone 1: Week 1 & 2 — Authentication & Setup (COMPLETED)
+
+**Objectives:**
+- Define roles: User, Analyst, Admin
+- Initialize Spring Boot backend and React frontend
+- Implement JWT and OAuth2 authentication
+- Create registration/login UI and profile management
+
+**Completed Tasks:**
+
+#### Backend Implementation
+- ✅ Spring Boot 3.5.5 project setup with Maven
+- ✅ MySQL database configuration and integration
+- ✅ User entity with role-based access (USER, ANALYST, ADMIN)
+- ✅ JWT token generation and validation service
+- ✅ OAuth2 Google Sign-In integration
+- ✅ Authentication REST endpoints (`/api/auth/register`, `/api/auth/login`)
+- ✅ Spring Security configuration with role-based authorization
+- ✅ Password encryption using BCrypt
+- ✅ Custom UserDetailsService implementation
+- ✅ CORS configuration for frontend integration
+
+#### Frontend Implementation
+- ✅ React 19.2.1 application setup with React Router 7.10.1
+- ✅ Tailwind CSS 3.4.18 integration for responsive design
+- ✅ Dark mode support with ThemeContext
+- ✅ Login page with email/password and Google OAuth2 button
+- ✅ Registration page with role selection dropdown
+- ✅ OAuth2RedirectHandler component for Google auth callback
+- ✅ ProtectedRoute component for route guarding
+- ✅ JWT token management (localStorage)
+- ✅ Axios interceptor for automatic authentication headers
+- ✅ Toast notification system for user feedback
+- ✅ DarkModeToggle component
+
+#### UI Components Created
+- ✅ LandingPage with feature showcase
+- ✅ UserDashboard with personalized interface
+- ✅ AnalystDashboard with analytics tools preview
+- ✅ AdminDashboard with user management interface
+- ✅ Profile management module
+- ✅ Responsive navigation with role-based routing
+
+**Outcome:**
+- ✅ **Auth endpoints**: Fully functional registration and login APIs
+- ✅ **Role-based login**: JWT authentication with USER, ANALYST, ADMIN roles
+- ✅ **Profile module**: Role-specific dashboards with protected routes
+- ✅ Secure backend with Spring Security and BCrypt password hashing
+- ✅ Modern, responsive UI with dark mode support
+- ✅ OAuth2 Google Sign-In working seamlessly
+
 ## ✨ Features
 
 - **Authentication & Security**: JWT-based authentication with OAuth2 Google Sign-In
